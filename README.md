@@ -91,7 +91,7 @@ python3 -m pip install -U discord.py[voice]
 python -m pip install requests
 ```
 
--Installing [YouTube_dl](https://github.com/ytdl-org/youtube-dl)
+- Installing [YouTube_dl](https://github.com/ytdl-org/youtube-dl)
 ``` 
 pip install youtube_dl
 ```
