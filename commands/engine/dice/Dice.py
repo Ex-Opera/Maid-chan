@@ -30,7 +30,7 @@ class Dice:
     rolls = [random.randint(1, self.rolls[1]) for _ in range(self.rolls[0])]
     self.total = sum(rolls)
     self.total = eval(f'{self.total}{self.bonus}') if self.bonus else self.total
-    return self.total
+    return rolls, self.bonus, self.total
 
 dice = Dice("6d12+5")
 print(dice.roll())
