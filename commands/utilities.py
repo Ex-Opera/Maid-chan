@@ -58,17 +58,16 @@ Episode: {img['result'][1]['episode']}
 Time between: {str(datetime.timedelta(seconds=(img['result'][1]['from'])))[:7]} and {str(datetime.timedelta(seconds=(img['result'][1]['to'])))[:7]}""")
 
   @commands.command()
-  async def translate(self, ctx, *, input):
-    lang = input[:+2]
-    url = f"https://translation.googleapis.com/language/translate/v2?key={config.translation_key}"
-    input = {
-      "q": input[+3:],
-      "target": lang,
+  async def translate(self, ctx, *, input_text):
+    language = input_text[:2]
+    url = f"https://translation.googleapis.com/language/translate/v2?key={config.translate_key}"
+    input_translate = {
+      "q": input_text[3:],
+      "target": language,
       "format": "text",
       }
-    res = requests.post(url, json=input)
-    output = json.loads(res.text)
-    await ctx.send(f"Detected language: {output['data']['translations'][0]['detectedSourceLanguage']} \nTranslation: {output['data']['translations'][0]['translatedText']}")
+    res = requests.post(url, json=input_transle).json()
+    await ctx.send(f"Detected language: {res['data']['translations'][0]['detectedSourceLanguage']} \nTranslation: {res['data']['translations'][0]['translatedText']}")
 
 async def setup(Maidchan):
     await Maidchan.add_cog(Utilities(Maidchan))
