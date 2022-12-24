@@ -1,25 +1,17 @@
 import requests
 import json
-        # anilistPOST = str(anilistPOST.text)
-        # anilistPOST = json.loads(str(anilistPOST))
+import config
 
-def translate(inputTrans):
-    
-        url = f"https://translation.googleapis.com/language/translate/v2?key=???????????????????"
-        inputTransObj = {
-            "q": inputTrans,
-            "target": "pt",
-            "format": "text"
-        }
-        
-        # outputTrans = requests.post(url, json=inputTransObj).text
-        # outputTrans = requests.post(url, json=inputTransObj)
-        # outputTrans = str(outputTrans.text)
-        # outputTrans = json.loads(str(outputTrans))
-        # print(outputTrans['data']['translations'][0]['detectedSourceLanguage'])
+def translate(input_translate):
+  url = f"https://translation.googleapis.com/language/translate/v2?key=config.translate_key"
+  input_translate = {
+    "q": input_translate,
+    "target": "pt",
+    "format": "text",
+  }
+  # output = requests.post(url, json=input_translate).json()
+  # print(output['data']['translations'][0]['detectedSourceLanguage'])
+  language = input_translate["q"][+2:]
+  print(language)
 
-
-        langueTarget = inputTrans[+2:]
-        print(langueTarget)
-
-translate(inputTrans = "pt Hello, World!")
+translate("Hello, World!")
