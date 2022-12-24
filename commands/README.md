@@ -56,7 +56,7 @@ m!fox
 ```
 
 ---
-## Recreation <a name="recreation"></a>
+## Dice <a name="dice"></a>
 - Dice <br>
 
 This command is part of **RollDice Project**, see [technologies used](#Technologies_Used) for more information. The rolldice can roll dice at the interval that you choose, times as you want and sum bonus. And return list of rolls (with bonus if add) and total roll.<br>
@@ -64,11 +64,11 @@ Syntax example:
 ```
 m!dice 2d30+4
 ``` 
-"2" is amount of times the dice will be rolled, "30" is the max number of dice and "+4" is the bonus will be sum in total roll. If this command is used without a specified amount of time, it will roll just one time; without "30" it will return error; without "+4", obviously, it will return without any bonus, the bonus supported is ``+`` ``-``, ``*`` or ``/``. <br>
+"2" is amount of times the dice will be rolled, "30" is the dice side and "+4" is the bonus sum in total roll. If this command is used without a specified amount of rolls, it will just roll one time; without dice side ("30") it will return an error; without "+4" bonus, it will return without any bonus, the bonus multipliers are ``+`` ``-``, ``*`` or ``/``. <br>
 Return example:
 ```
 2d30+4
-[13, 1, '+4'] -> 18
+Rolls: [13, 1] Bonus: +4 -> 18
 ```
 
 <br>
