@@ -1,4 +1,4 @@
-<h1 align="center"> ~Commands~ </h1>
+<h1 align="center"> 🛸Commands🛸 </h1>
 
 <!-- ---------------------------------------------- -->
 <br>
