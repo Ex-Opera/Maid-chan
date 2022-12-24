@@ -23,7 +23,8 @@ class TestDice(unittest.TestCase):
     self.assertEqual(bonus, "-5")
     self.assertIsInstance(total, int)
 
- def test_roll_with_multiplication(self):     dice = Dice("2d20*5")
+ def test_roll_with_multiplication(self):
+    dice = Dice("2d20*5")
     rolls, bonus, total = dice.roll()
     self.assertEqual(len(rolls), 2)
     self.assertEqual(bonus, "*5")
