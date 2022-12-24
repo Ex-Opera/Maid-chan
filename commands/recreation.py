@@ -8,9 +8,9 @@ class Recreation(commands.Cog):
 
   @commands.command()
   async def dice(self, ctx, *, dice):
-    diceImport = diceMain(dice)
-    diceImport.main()
-    await ctx.send(f'{dice}\n{diceImport.rollList} -> {diceImport.rollTotal}')
+    dice = Dice(dice)
+    rolls, bonus, total = dice.roll()
+    await ctx.send(f"Rolls: {rolls} Bonus: {bonus} -> {total}")
 
 async def setup(Maidchan):
   await Maidchan.add_cog(Recreation(Maidchan))
