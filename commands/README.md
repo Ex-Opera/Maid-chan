@@ -7,7 +7,7 @@
 
 - [Home](../)
 - [Pics](#pics)
-- [Recreation](#recreation)
+- [Recreation](#dice)
 - [Utilities](#utilities)
 - [Music](#music)
 
