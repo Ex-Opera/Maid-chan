@@ -1,4 +1,5 @@
 import discord, requests, json, datetime, time
+import config
 from discord.ext import commands
 from discord.ext.commands import bot
 from random import choice
