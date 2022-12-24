@@ -1,5 +1,4 @@
 import requests
-import json
 import config
 
 def translate(input_translate):
