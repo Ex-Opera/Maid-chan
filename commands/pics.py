@@ -7,7 +7,7 @@ class Pics(commands.Cog):
     self.Maidchan = Maidchan
     self.session = aiohttp.ClientSession()
 
-  async def send__pic(self, ctx, url, id):
+  async def send_pic(self, ctx, url, id):
     try:
       async with self.session.get(url) as response:
         data = await response.json()
