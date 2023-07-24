@@ -3,7 +3,7 @@ from discord.ext import commands
 import config
 
 def clear_console():
-  if sys.platform == "linux" or sys.platform == "linux2":
+  if sys.platform == "linux":
     subprocess.run("clear")
   elif sys.platform == "darwin":
     subprocess.run("clear")
