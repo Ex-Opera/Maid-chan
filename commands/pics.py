@@ -32,5 +32,30 @@ class Pics(commands.Cog):
   async def fox(self, ctx):
     await self.send_pic(ctx, "https://randomfox.ca/floof/", "image")
 
+  @commands.command()
+  async def animesearch(self, ctx, *, img):
+    async with self.session.get(f'https://api.trace.moe/search?cutBorders&url={img}') as response:
+      img = await response.json()
+      anilistQuery = '''
+        query ($id: Int) {
+        Media (id: $id, type: ANIME) {
+        id
+        title {
+        romaji
+        english
+        native
+        }
+      }
+    }'''
+    async with self.session.post("https://graphql.anilist.co/", json={'query': anilistQuery, 'variables': {'id': img['result'][1]['anilist']}}) as response:
+      anilistPOST = await response.json()
+      await ctx.send(f"""
+      Similarity: {(str(float((img['result'][1]['similarity'])*100)))[:5]}%
+      Anilist: https://anilist.co/anime/{img['result'][1]['anilist']}
+      Tittle romaji: {anilistPOST['data']['Media']['title']['romaji']}
+      Tittle romaji: {anilistPOST['data']['Media']['title']['english']}
+      Episode: {img['result'][1]['episode']}
+      Time between: {str(datetime.timedelta(seconds=(img['result'][1]['from'])))[:7]} and {str(datetime.timedelta(seconds=(img['result'][1]['to'])))[:7]}""")
+
 async def setup(Maidchan):
   await Maidchan.add_cog(Pics(Maidchan))
