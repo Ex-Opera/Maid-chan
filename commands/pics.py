@@ -25,8 +25,8 @@ class Pics(commands.Cog):
     if ctx.channel.is_nsfw() == True:
        category = category or random.choice(['waifu', 'neko', 'trap', 'blowjob'])
        await self.send_pic(ctx, f"https://api.waifu.pics/nsfw/{category}", "url")
-     else:
-       await ctx.channel.send("M-master, wrong channel!")
+    else:
+      await ctx.channel.send("M-master, wrong channel!")
 
   @commands.command()
   async def fox(self, ctx):
