@@ -1,9 +1,11 @@
-import discord, requests, json, datetime, time
+import discord
+import aiohttp
 import config
 from discord.ext import commands
 from discord.ext.commands import bot
 from random import choice
 # from main import Maidchan
+
 
 class Utilities(commands.Cog):
   def __init__(self, Maidchan):
@@ -15,15 +17,9 @@ class Utilities(commands.Cog):
     await ctx.message.delete()
 
   @commands.command()
-  async def math(self, ctx, *, calc):
-    if '+' in calc or '-' in calc or '/' in calc or '*' in calc or 'sqrt' in calc or '**':
-    await ctx.send(eval(calc))
-
-  @commands.command()
-  async def avatar(self, ctx, *, user: discord.Member=None):
-    user = user if user else ctx.author
-    avatar = user.avatar_url
-    await ctx.send(avatar)
+  async def avatar(self, ctx, *, user: discord.Member = None):
+    user = user or ctx.author
+    await ctx.send(user.avatar.url)
 
   @commands.command()
   async def ping(self, ctx):
@@ -34,12 +30,17 @@ class Utilities(commands.Cog):
     language = input_text[:2]
     url = f"https://translation.googleapis.com/language/translate/v2?key={config.translate_key}"
     input_translate = {
-      "q": input_text[3:],
-      "target": language,
-      "format": "text",
-      }
-    res = requests.post(url, json=input_translate).json()
-    await ctx.send(f"Detected language: {res['data']['translations'][0]['detectedSourceLanguage']} \nTranslation: {res['data']['translations'][0]['translatedText']}")
+        "q": input_text[3:],
+        "target": language,
+        "format": "text",
+    }
+    async with aiohttp.ClientSession() as session:
+      async with session.post(url, json=input_translate) as res:
+        data = await res.json()
+        await ctx.send(
+            f"Detected language: {data['data']['translations'][0]['detectedSourceLanguage']} \nTranslation: {data['data']['translations'][0]['translatedText']}"
+        )
+
 
 async def setup(Maidchan):
-    await Maidchan.add_cog(Utilities(Maidchan))
+  await Maidchan.add_cog(Utilities(Maidchan))
