@@ -18,7 +18,6 @@ async def on_ready():
   print(f'Heya Master, I am here!')
   print(f'My name is {Maidchan.user.name}.')
   print(f'My user id is {Maidchan.user.id}.')
-  print(f"{'-'*10}IkkiArtz{'-'*10}")
   await Maidchan.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='you!'))
 
 async def command_init():
