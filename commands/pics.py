@@ -1,6 +1,9 @@
 import discord
+from discord.ext import commands
 import aiohttp
 import random
+import time
+import datetime
 
 class Pics(commands.Cog):
   def __init__(self, Maidchan):
