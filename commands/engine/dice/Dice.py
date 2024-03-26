@@ -18,7 +18,7 @@ class Dice:
         if not match:
             raise ValueError("Invalid dice string format")
         # Extract the number of dice and sides per die and bonuses
-        num_dice = int(match.group(1)) or 1
+        num_dice = int(match.group(1) or 1)
         sides_per_die = int(match.group(2))
         self.dice_info = (num_dice, sides_per_die)
         self.bonuses = match.group(3)
